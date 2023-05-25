@@ -7,8 +7,6 @@ import axios from 'axios';
 const HomeScreen = ({route, navigation}) => {
 
   const grade1 = 'https://kanjiapi.dev/v1/kanji/grade-1';
-
-  const response = axios.get(`${grade1}`);
   
   const [kanji, setKanji] = useState();
   
