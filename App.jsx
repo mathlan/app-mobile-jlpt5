@@ -1,85 +1,35 @@
+// import * as React from 'react';
 import React, {useState} from 'react';
 import {Text, View, TextInput, StyleSheet, Button} from 'react-native';
 import DatePicker from 'react-native-date-picker';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import HomeScreen from './src/components/homeScreen';
+import NewPredict from './src/components/newPredict';
 
-const YourApp = () => {
-  // States
+// function HomeScreen({navigation}) {
+//   return (
+//     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+//       <Text>Home Screen</Text>
+//       <Button
+//         title="Go to Details"
+//         onPress={() => navigation.navigate('Details')}
+//       />
+//     </View>
+//   );
+// }
 
-  // Liste des notes
-  const [notes, setNotes] = useState([]);
+const Stack = createNativeStackNavigator();
 
-  // // Nouvelle note
-  // const [newNote, setNewNote] = useState({});
-
-  // Text input(
-  const [text, setText] = useState('');
-
-  // Date picker
-  const [date, setDate] = useState(new Date());
-
-  // Ajouter une note
-  const handleAdd = () => {
-    const newNote = {nom: text, date: date.toString()};
-    setNotes([...notes, newNote]);
-  };
-
+function App() {
   return (
-    <View>
-      <TextInput
-        style={styles.input}
-        placeholder="Votre note"
-        onChangeText={inputText => {
-          setText(inputText);
-        }}
-      />
-
-      <DatePicker date={date} onDateChange={setDate} />
-
-      <Button title="Envoyer" onPress={() => handleAdd()} />
-
-      {notes.sort().map((note, index) => {
-        return (
-          <Text key={index}>
-            {note.nom} {note.date}
-          </Text>
-        );
-      })}
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="NewPredict" component={NewPredict} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
+}
 
-export default YourApp;
-
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-});
-
-// return (
-//   <TextInput
-//     style={styles.input}
-//     onChangeText={onChangeText}
-//     value={text}
-//     placeholder="Votre note"
-//   />
-
-//   <Button
-//     title="Envoyer"
-//     onPress={() => Alert.alert('Button with adjusted color pressed')}
-//   />
-// );
-
-// export default TextInputExample;
-
-// function blabla () {}
-// const blabla = () => {}
-
-// date: new Date().toLocaleDateString('fr', {
-//   year: 'numeric',
-//   month: 'short',
-//   day: 'numeric',
-// }),
+export default App;
