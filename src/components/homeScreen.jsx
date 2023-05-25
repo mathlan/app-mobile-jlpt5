@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Text, ScrollView, View, Button, TouchableOpacity, StyleSheet} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import axios from 'axios';
 
 const HomeScreen = ({route, navigation}) => {
@@ -30,7 +32,12 @@ const HomeScreen = ({route, navigation}) => {
       {kanji ? kanji.map((kanji, index) => {
     console.log('kanji', kanji)
     return (
-      <TouchableOpacity style={styles.button} onPress={() => {}}>
+      <TouchableOpacity style={styles.button} onPress={() => {
+        navigation.navigate('KanjiDetail', {
+        kanji: [kanji],
+      });
+      }}>
+        
       <Text key={index}>
         {kanji}
       </Text>
@@ -43,6 +50,10 @@ const HomeScreen = ({route, navigation}) => {
         title="Nouvelle prédiction"
         onPress={() => navigation.navigate('NewPredict')}
       /> */}
+            <Button
+        title="Nouvelle prédiction"
+        onPress={() => navigation.navigate('KanjiDetail')}
+      />
       </View>
     </ScrollView>
   );

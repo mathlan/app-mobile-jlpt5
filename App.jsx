@@ -5,6 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Header from './src/components/Header';
 import HomeScreen from './src/components/HomeScreen';
 import NewPredict from './src/components/NewPredict';
+import KanjiDetail from './src/components/KanjiDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +15,7 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="NewPredict" component={NewPredict} />
+        <Stack.Screen name="KanjiDetail" component={KanjiDetail} />
       </Stack.Navigator>
       <Header />
     </NavigationContainer>
