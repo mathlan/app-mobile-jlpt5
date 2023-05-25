@@ -14,6 +14,11 @@ const NewPredict = ({navigation}) => {
   const handleAdd = () => {
     const newNote = {nom: text, date: date.toString()};
     setNotes([...notes, newNote]);
+    console.log([...notes, newNote]);
+    navigation.navigate('HomeScreen', {
+      notes: [...notes, newNote],
+      // Trop rapide, il faut attendre l'actualisation du state
+    });
   };
 
   return (
@@ -35,27 +40,27 @@ const NewPredict = ({navigation}) => {
 
       <Button title="Envoyer" onPress={() => handleAdd()} />
 
-      <Button
+      {/* <Button
         title="Retour"
         onPress={() =>
           navigation.navigate('HomeScreen', {
             notes: notes,
           })
         }
-      />
+      /> */}
 
       {/* <Button
         title="Go to Details"
         onPress={() => navigation.navigate('NewPredict')}
       /> */}
 
-      {notes.sort().map((note, index) => {
+      {/* {notes.sort().map((note, index) => {
         return (
           <Text key={index}>
             {note.nom} {note.date}
           </Text>
         );
-      })}
+      })} */}
     </View>
   );
 };

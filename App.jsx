@@ -1,23 +1,10 @@
 // import * as React from 'react';
-import React, {useState} from 'react';
-import {Text, View, TextInput, StyleSheet, Button} from 'react-native';
-import DatePicker from 'react-native-date-picker';
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HomeScreen from './src/components/homeScreen';
-import NewPredict from './src/components/newPredict';
-
-// function HomeScreen({navigation}) {
-//   return (
-//     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-//       <Text>Home Screen</Text>
-//       <Button
-//         title="Go to Details"
-//         onPress={() => navigation.navigate('Details')}
-//       />
-//     </View>
-//   );
-// }
+import Header from './src/components/Header';
+import HomeScreen from './src/components/HomeScreen';
+import NewPredict from './src/components/NewPredict';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +15,7 @@ function App() {
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="NewPredict" component={NewPredict} />
       </Stack.Navigator>
+      <Header />
     </NavigationContainer>
   );
 }
